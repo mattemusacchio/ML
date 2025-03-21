@@ -1,8 +1,6 @@
 import numpy as np 
 import pandas as pd
 
-from metrics import MSE
-
 def train_val_split(df, test_size=0.2, random_state=95):
     """
     Divide el DataFrame en conjuntos de entrenamiento y validación sin usar sklearn.
@@ -15,6 +13,7 @@ def train_val_split(df, test_size=0.2, random_state=95):
     return train_df, val_df
 
 def cross_val(X, y, model_class, folds=5, **model_params):
+    from metrics import MSE
     """
     Realiza validación cruzada k-fold para evaluar un modelo.
 

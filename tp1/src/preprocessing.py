@@ -44,7 +44,7 @@ def min_max_normalize(train_df, val_df, columns):
     params = {}
     # Primero normalizar el conjunto de entrenamiento y guardar parámetros
     for col in columns:
-        # if col != 'price':
+        if col != 'price':
             min_val = train_df[col].min()
             max_val = train_df[col].max()
             train_df[col] = (train_df[col] - min_val) / (max_val - min_val)
@@ -52,7 +52,7 @@ def min_max_normalize(train_df, val_df, columns):
     
     # Usar los parámetros del conjunto de entrenamiento para normalizar validación
     for col in columns:
-        # if col != 'price':
+        if col != 'price':
             min_val, max_val = params[col]
             val_df[col] = (val_df[col] - min_val) / (max_val - min_val)
         

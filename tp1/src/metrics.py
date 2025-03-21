@@ -1,5 +1,4 @@
 import numpy as np
-from utils import pretty_print_df
 import pandas as pd
 
 def MSE(y_true, y_pred):

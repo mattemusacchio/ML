@@ -1,5 +1,4 @@
 import numpy as np
-from utils import pretty_print_df
 import pandas as pd
 from metrics import MSE, MAE, RMSE, R2
 
@@ -23,10 +22,10 @@ class LinearRegression:
         self.features = X.columns
         self.X = X
         self.y = y
-        self.betas = np.zeros(len(self.features) + 1)
         self.l1 = l1
         self.l2 = l2
-        self.coef = None
+        # Inicializar coef como array de numpy
+        self.coef = np.zeros(len(self.features) + 1)  # +1 para el intercepto
 
     def compute_loss(self, X: pd.DataFrame = None, Y: pd.Series = None, metrics=['mse'], print_text=True):
         """
@@ -95,9 +94,8 @@ class LinearRegression:
 
     def fit_gradient_descent(self, lr=0.01, epochs=1000):
         """Entrena el modelo usando descenso por gradiente con regularización L1 y L2."""
-        X = np.c_[np.ones((len(self.X), 1)), self.X]
+        X = np.c_[np.ones((len(self.X), 1)), np.array(self.X, dtype=np.float64)]
         m = X.shape[0]
-        self.coef = np.zeros(X.shape[1])
         
         for _ in range(epochs):
             y_pred = X @ self.coef
@@ -118,6 +116,14 @@ class LinearRegression:
         return X.dot(self.coef)
 
     def print_coefficients(self):
+        from utils import pretty_print_df
         """Imprime los coeficientes con nombres de variables."""
-        df = pd.DataFrame(self.coef.flatten(), index=['intercept'] + list(self.features), columns=['Coeficiente'])
+        # Aseguramos que cada fila tenga el nombre de la feature correspondiente
+        nombres_filas = ['intercept'] + list(self.features)
+        coeficientes = self.coef.flatten()
+        
+        # Creamos un DataFrame sin índice para que los nombres aparezcan como una columna
+        data = {'Feature': nombres_filas, 'Coeficiente': coeficientes}
+        df = pd.DataFrame(data)
+        
         pretty_print_df(df, title="Coeficientes del modelo")

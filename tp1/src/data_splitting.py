@@ -3,7 +3,7 @@ import pandas as pd
 
 from metrics import MSE
 
-def train_val_split(df, test_size=0.2, random_state=42):
+def train_val_split(df, test_size=0.2, random_state=95):
     """
     Divide el DataFrame en conjuntos de entrenamiento y validación sin usar sklearn.
     """

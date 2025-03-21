@@ -1,16 +1,9 @@
 import numpy as np
+from utils import pretty_print_df
+import pandas as pd
 
 def MSE(y_true, y_pred):
-    """
-    Calcula el Error Cuadrático Medio (ECM) entre los valores reales y las predicciones.
-
-    Parámetros:
-    - y_true: np.array, valores reales.
-    - y_pred: np.array, valores predichos.
-
-    Retorna:
-    - ECM: float, error cuadrático medio.
-    """
+    """Calcula el Error Cuadrático Medio (ECM)."""
     return np.mean((y_true - y_pred) ** 2)
 
 def MAE(y_true, y_pred):
@@ -21,6 +14,17 @@ def RMSE(y_true, y_pred):
     """Calcula la Raíz del Error Cuadrático Medio (RMSE)."""
     return np.sqrt(MSE(y_true, y_pred))
 
-def R2(y_true, y_pred):
-    """Calcula el Coeficiente de Determinación (R2)."""
-    return 1 - (MSE(y_true, y_pred) / np.var(y_true))
+def R2(y_true: np.ndarray, y_pred: np.ndarray) -> float:
+    """
+    Calcula el coeficiente de determinación (R2) entre los valores reales y los valores predichos.
+
+    Args:
+        y_true (np.ndarray): Array de valores reales.
+        y_pred (np.ndarray): Array de valores predichos.
+
+    Returns|:
+        float: Coeficiente de determinación.
+    """
+    ss_res = np.sum((y_true - y_pred) ** 2)
+    ss_tot = np.sum((y_true - np.mean(y_true)) ** 2)
+    return 1 - (ss_res / ss_tot)

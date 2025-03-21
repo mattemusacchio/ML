@@ -25,26 +25,38 @@ def normalize(df, columns):
         params[col] = (mean, std)
     return df, params
 
-def min_max_normalize(df, columns):
+def min_max_normalize(train_df, val_df, columns):
     """
     Normaliza las columnas numéricas seleccionadas usando normalización Min-Max,
-    que escala los valores al rango [0,1].
+    que escala los valores al rango [0,1]. Primero normaliza el conjunto de entrenamiento
+    y luego aplica los mismos parámetros al conjunto de validación.
     
     Parámetros:
-    - df: pd.DataFrame, el DataFrame con los datos
+    - train_df: pd.DataFrame, el DataFrame de entrenamiento
+    - val_df: pd.DataFrame, el DataFrame de validación
     - columns: list, lista de columnas a normalizar
     
     Retorna:
-    - df: pd.DataFrame normalizado
+    - train_df: pd.DataFrame de entrenamiento normalizado
+    - val_df: pd.DataFrame de validación normalizado
     - params: dict con los parámetros (min, max) por columna para poder revertir
     """
     params = {}
+    # Primero normalizar el conjunto de entrenamiento y guardar parámetros
     for col in columns:
-        min_val = df[col].min()
-        max_val = df[col].max()
-        df[col] = (df[col] - min_val) / (max_val - min_val)
-        params[col] = (min_val, max_val)
-    return df, params
+        # if col != 'price':
+            min_val = train_df[col].min()
+            max_val = train_df[col].max()
+            train_df[col] = (train_df[col] - min_val) / (max_val - min_val)
+            params[col] = (min_val, max_val)
+    
+    # Usar los parámetros del conjunto de entrenamiento para normalizar validación
+    for col in columns:
+        # if col != 'price':
+            min_val, max_val = params[col]
+            val_df[col] = (val_df[col] - min_val) / (max_val - min_val)
+        
+    return train_df, val_df, params
 
 
 def one_hot_encoder(df, columns):

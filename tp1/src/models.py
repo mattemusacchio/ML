@@ -70,8 +70,8 @@ class LinearRegression:
 
         # Retorno en formato diccionario o string formateado
         if print_text:
-            print("Model's loss:")
-            print(', '.join([f"{key.upper()}: {value:,.6f}" for key, value in selected_metrics.items()]))
+            from utils import print_metrics
+            print_metrics(ground_truth, predictions)
             return
         
         return selected_metrics

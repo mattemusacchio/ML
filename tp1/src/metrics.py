@@ -3,11 +3,11 @@ import pandas as pd
 
 def MSE(y_true, y_pred):
     """Calcula el Error Cuadrático Medio (ECM)."""
-    return np.mean((y_true - y_pred) ** 2)
+    return np.sum((y_true - y_pred) ** 2) / len(y_true)
 
 def MAE(y_true, y_pred):
     """Calcula el Error Absoluto Medio (MAE)."""
-    return np.mean(np.abs(y_true - y_pred))
+    return np.sum(np.abs(y_true - y_pred)) / len(y_true)
 
 def RMSE(y_true, y_pred):
     """Calcula la Raíz del Error Cuadrático Medio (RMSE)."""

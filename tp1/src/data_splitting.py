@@ -12,47 +12,54 @@ def train_val_split(df, test_size=0.2, random_state=95):
     train_df, val_df = df.iloc[train_indices], df.iloc[val_indices]
     return train_df, val_df
 
-def cross_val(X, y, model_class, folds=5, **model_params):
-    from metrics import MSE
+def cross_val(X, y, model, folds=10, l1=0.0, l2=0.0):
+    from models import LinearRegression
     """
     Realiza validación cruzada k-fold para evaluar un modelo.
 
-    Parámetros:
-    - X: np.array, features de entrada.
-    - y: np.array, variable objetivo.
-    - model_class: clase del modelo a evaluar (por ejemplo, LinearRegression).
-    - folds: int, número de folds para la validación cruzada.
-    - model_params: dict, parámetros adicionales para inicializar el modelo.
+    Args:
+        X (pd.DataFrame): Features de entrada
+        y (pd.Series): Variable objetivo
+        model (str): Método de entrenamiento ('gradient', 'pseudo' o 'normal')
+        folds (int): Número de folds para la validación cruzada
+        l1 (float): Coeficiente de regularización L1 (Lasso)
+        l2 (float): Coeficiente de regularización L2 (Ridge)
 
-    Retorna:
-    - errores: lista de errores ECM en cada fold.
+    Returns:
+        dict: Diccionario con las métricas promedio de todos los folds
     """
-    X = np.array(X, dtype=np.float64)
-    y = np.array(y, dtype=np.float64).reshape(-1, 1)
-    
     n = len(y)
-    indices = np.random.permutation(n)  # Barajar índices
+    indices = np.random.permutation(n)
     fold_size = n // folds
-    errores = []
+    metrics_per_fold = []
 
     for i in range(folds):
-        # Definir conjuntos de entrenamiento y validación
-        val_idx = indices[i * fold_size: (i + 1) * fold_size]
+        # Definir índices de validación y entrenamiento
+        val_idx = indices[i * fold_size:(i + 1) * fold_size]
         train_idx = np.setdiff1d(indices, val_idx)
 
-        X_train, X_val = X[train_idx], X[val_idx]
-        y_train, y_val = y[train_idx], y[val_idx]
+        # Separar datos
+        X_train = X.iloc[train_idx]
+        X_val = X.iloc[val_idx]
+        y_train = y.iloc[train_idx]
+        y_val = y.iloc[val_idx]
 
-        # Inicializar y entrenar el modelo
-        model = model_class(X_train, y_train, **model_params)
-        model.fit_pseudo_inverse()  # Puedes cambiar a otro método de entrenamiento
+        # Entrenar modelo
+        reg = LinearRegression(X_train, y_train, l1=l1, l2=l2)
+        
+        if model == 'gradient':
+            reg.fit_gradient_descent()
+        elif model == 'pseudo':
+            reg.fit_pseudo_inverse()
+        elif model == 'l2':
+            reg.fit_normal_equation()
+        else:
+            raise ValueError("model debe ser 'gradient', 'pseudo' o 'normal'")
 
-        # Hacer predicciones
-        y_pred = model.predict(X_val)
+        # Evaluar y guardar métricas
+        metrics = reg.compute_loss(X_val, y_val, metrics='all', print_text=False)
+        metrics_per_fold.append(metrics)
 
-        # Calcular ECM (Error Cuadrático Medio)
-        error = MSE(y_val, y_pred)
-        errores.append(error)
-
-    return errores
+        # Devolver lista de MSE de cada fold
+    return [fold['mse'] for fold in metrics_per_fold]
 

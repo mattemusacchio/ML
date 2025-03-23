@@ -27,57 +27,36 @@ class LinearRegression:
         # Inicializar coef como array de numpy
         self.coef = np.zeros(len(self.features) + 1)  # +1 para el intercepto
 
-    def compute_loss(self, X: pd.DataFrame = None, Y: pd.Series = None, metrics=['mse'], print_text=True):
-        """
-        Calcula el costo según las métricas especificadas.
+    def analyze_metrics(self, X: pd.DataFrame = None, Y: pd.Series = None, print_metrics_=True):
+        """Calcula las métricas de evaluación del modelo.
 
         Args:
-            X (pd.DataFrame): Los datos de prueba. Si no se pasa, se utilizan los datos de entrenamiento.
-            Y (pd.Series): El vector de etiquetas. Si no se pasa, se utilizan las etiquetas de entrenamiento.
-            metrics (str o list): Métrica(s) a calcular. Opciones: 'mse', 'mae', 'rmse', 'r2', 'all'. Puede ser lista o string.
-            print_text (bool): Si es True, imprime el texto con el costo del modelo.
+            X (pd.DataFrame, opcional): Datos de entrada para evaluar. Si es None, usa los datos de entrenamiento.
+            Y (pd.Series, opcional): Valores objetivo para evaluar. Si es None, usa los valores de entrenamiento.
+            print_text (bool, opcional): Si es True imprime las métricas formateadas. Si es False retorna un diccionario.
 
         Returns:
-            dict o print: Diccionario con las métricas y sus valores, o print con la información formateada.
+            dict o None: Si print_text es False retorna un diccionario con las métricas calculadas.
+                        Si print_text es True imprime las métricas y retorna None.
         """
-        predictions_log = self.predict(self.X) if X is None else self.predict(X)
-        predictions = np.expm1(predictions_log)
-        ground_truth_log = self.y if Y is None else Y
-        ground_truth = np.expm1(ground_truth_log)
+        predict_log = self.predict(X)
+        predict = np.expm1(predict_log)
+        real_log = Y
+        real = np.expm1(real_log)
 
-
-        # Definimos las métricas disponibles
-        available_metrics = {
-            'mse': MSE(ground_truth, predictions),
-            'mae': MAE(ground_truth, predictions),
-            'rmse': RMSE(ground_truth, predictions),
-            'r2': R2(ground_truth, predictions)
+        metrics = {
+            'mse': MSE(real, predict),
+            'mae': MAE(real, predict),
+            'rmse': RMSE(real, predict),
+            'r2': R2(real, predict)
         }
 
-        # Si el usuario pasa solo un string, lo convertimos en una lista
-        if isinstance(metrics, str):
-            if metrics.lower() == 'all':
-                metrics = list(available_metrics.keys())
-            else:
-                metrics = [metrics.lower()]
-        else:
-            metrics = [metric.lower() for metric in metrics]
-
-
-        # Filtrar solo las métricas solicitadas
-        selected_metrics = {key: available_metrics[key] for key in metrics if key in available_metrics}
-
-        # Si no hay métricas válidas, lanzamos error
-        if not selected_metrics:
-            raise ValueError("Invalid metric. Use 'mse', 'mae', 'rmse', 'r2', 'all' or a list with multiple metrics.")
-
-        # Retorno en formato diccionario o string formateado
-        if print_text:
+        if print_metrics_:
             from utils import print_metrics
-            print_metrics(ground_truth, predictions)
+            print_metrics(real, predict)
             return
         
-        return selected_metrics
+        return metrics
 
     def fit_pseudo_inverse(self):
         """Entrena el modelo utilizando la pseudo-inversa."""

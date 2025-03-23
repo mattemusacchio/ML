@@ -59,7 +59,7 @@ def cross_val(X, y, model, folds=10, l1=0.0, l2=0.0):
             raise ValueError("model debe ser 'gradient', 'pseudo' o 'normal'")
 
         # Evaluar y guardar métricas
-        metrics = reg.compute_loss(X_val, y_val_log, metrics='all', print_text=False)
+        metrics = reg.analyze_metrics(X_val, y_val_log, print_metrics_=False)
         metrics_per_fold.append(metrics)
 
         # Devolver lista de MSE de cada fold

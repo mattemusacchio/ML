@@ -72,75 +72,55 @@ def print_metrics(y_true, y_pred, model_name=""):
     title = f"Métricas del modelo {model_name}" if model_name else "Métricas del modelo"
     pretty_print_df(df_metrics, title=title)
 
+def gradient_descent(model: LinearRegression, X_train: pd.DataFrame, y_train: pd.Series, X_val: pd.DataFrame, y_val: pd.Series):
+    model.fit_gradient_descent()
+    model.predict(X_train)
+    model.print_coefficients()
+    print('Métricas en datos de entrenamiento:')
+    model.analyze_metrics(X=X_train, Y=y_train)
+    print('Métricas en datos de validación:')
+    model.analyze_metrics(X=X_val, Y=y_val)
+
+def pseudo_inverse(model: LinearRegression, X_train: pd.DataFrame, y_train: pd.Series, X_val: pd.DataFrame, y_val: pd.Series):
+    model.fit_pseudo_inverse()
+    model.predict(X_train)
+    model.print_coefficients()
+    print('Métricas en datos de entrenamiento:')
+    model.analyze_metrics(X=X_train, Y=y_train)
+    print('Métricas en datos de validación:')
+    model.analyze_metrics(X=X_val, Y=y_val)
+
+def normal_equation(model: LinearRegression, X_train: pd.DataFrame, y_train: pd.Series, X_val: pd.DataFrame, y_val: pd.Series):
+    model.fit_normal_equation()
+    model.predict(X_train)
+    model.print_coefficients()
+    print('Métricas en datos de entrenamiento:')
+    model.analyze_metrics(X=X_train, Y=y_train)
+    print('Métricas en datos de validación:')
+    model.analyze_metrics(X=X_val, Y=y_val)
    
-def trainPredictAndImport(train: pd.DataFrame, validation: pd.DataFrame, feature: str ='all', method: str ='both',l1=0.0,l2=0.0):
-    """Esta función entrena un modelo de regresión lineal y evalúa su desempeño en un conjunto de validación.
-
-    Args:
-        train (pd.DataFrame): DataFrame con los datos de entrenamiento.
-        validation (pd.DataFrame): DataFrame con los datos de validación.
-        feature (str, optional): Nombre de la columna a utilizar como feature. Si se pasa 'all', se utilizan todas las columnas excepto 'price'. Defaults to 'all'.
-        method (str, optional): Método de entrenamiento a utilizar. Puede ser 'gradient', 'pseudo' o 'both'. Defaults to 'both'.
-    """
-    def evaluateGradientDescent(model: LinearRegression, X: pd.DataFrame, y: pd.Series):
-        print('Resultados para Descenso por Gradiente')
-        model.fit_gradient_descent()
-        model.predict(train_df)
-        model.print_coefficients()
-        print('Métricas en datos de entrenamiento:')
-        model.compute_loss(metrics='all', X=train_df, Y=train_y_log)
-        print('Métricas en datos de validación:')
-        model.compute_loss(metrics='all', X=val_df, Y=val_y_log)
-    
-    def evaluatePseudoInverse(model: LinearRegression, X: pd.DataFrame, y: pd.Series):
-        print('Results for Pseudo Inverse')
-        model.fit_pseudo_inverse()
-        model.predict(train_df)
-        model.print_coefficients()
-        print('Métricas en datos de entrenamiento:')
-        model.compute_loss(metrics='all', X=train_df, Y=train_y_log)
-        print('Métricas en datos de validación:')
-        model.compute_loss(metrics='all', X=val_df, Y=val_y_log)
-
-    def evaluateNormalEquation(model: LinearRegression, X: pd.DataFrame, y: pd.Series):
-        print('Results for Normal Equation')
-        model.fit_normal_equation()
-        model.predict(train_df)
-        model.print_coefficients()
-        print('Métricas en datos de entrenamiento:')
-        model.compute_loss(metrics='all', X=train_df, Y=train_y_log)
-        print('Métricas en datos de validación:')
-        model.compute_loss(metrics='all', X=val_df, Y=val_y_log)
-
+def train_model_and_evaluate(train: pd.DataFrame, val: pd.DataFrame, features: list, method: str,l1=0.0,l2=0.0):
     train_y = train['price']
     train_y_log = np.log1p(train_y)
-    val_y = validation['price']
+    val_y = val['price']
     val_y_log = np.log1p(val_y)
-
-    if feature == 'all':
-        train_df = train.drop(columns=['price'])
-        val_df = validation.drop(columns=['price'])
-    elif isinstance(feature, list):
-        train_df = train[feature]
-        val_df = validation[feature]
-    else:
-        train_df = train[[feature]]
-        val_df = validation[[feature]] 
     
-    model = LinearRegression(train_df, train_y_log)
+    train_df = train[features]
+    val_df = val[features]
+    
+    model = LinearRegression(train_df, train_y_log, l1=l1, l2=l2)
     if method == 'gradient':
-        evaluateGradientDescent(model, val_df, val_y)
+        print('Gradient Descent')
+        gradient_descent(model,train_df, train_y_log, val_df, val_y_log)
     elif method == 'pseudo':
-        evaluatePseudoInverse(model, val_df, val_y)
-    if method == 'both':
-        # Generate two new models to avoid overwriting the previous one
-        evaluateGradientDescent(LinearRegression(train_df, train_y_log), val_df, val_y)
-        print('========================================================')
-        evaluatePseudoInverse(LinearRegression(train_df, train_y_log), val_df, val_y)
-    if method == 'l2':
-        evaluateNormalEquation(LinearRegression(train_df, train_y_log, l2=l2), val_df, val_y)
-    if method == 'l1':
-        evaluateGradientDescent(LinearRegression(train_df, train_y_log, l1=l1), val_df, val_y)
+        print('Pseudo Inverse')
+        pseudo_inverse(model, train_df, train_y_log, val_df, val_y_log)
+    elif method == 'l2':
+        print('Regularización L2')
+        normal_equation(model, train_df, train_y_log, val_df, val_y_log)
+    elif method == 'l1':
+        print('Regularización L1')
+        gradient_descent(model, train_df, train_y_log, val_df, val_y_log)
 
 def feature_engineering(df):
     from preprocessing import one_hot_encoder

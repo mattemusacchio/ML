@@ -42,10 +42,12 @@ def cross_val(X, y, model, folds=10, l1=0.0, l2=0.0):
         X_train = X.iloc[train_idx]
         X_val = X.iloc[val_idx]
         y_train = y.iloc[train_idx]
+        y_train_log = np.log1p(y_train)
         y_val = y.iloc[val_idx]
+        y_val_log = np.log1p(y_val)
 
         # Entrenar modelo
-        reg = LinearRegression(X_train, y_train, l1=l1, l2=l2)
+        reg = LinearRegression(X_train, y_train_log, l1=l1, l2=l2)
         
         if model == 'gradient':
             reg.fit_gradient_descent()
@@ -57,7 +59,7 @@ def cross_val(X, y, model, folds=10, l1=0.0, l2=0.0):
             raise ValueError("model debe ser 'gradient', 'pseudo' o 'normal'")
 
         # Evaluar y guardar métricas
-        metrics = reg.compute_loss(X_val, y_val, metrics='all', print_text=False)
+        metrics = reg.compute_loss(X_val, y_val_log, metrics='all', print_text=False)
         metrics_per_fold.append(metrics)
 
         # Devolver lista de MSE de cada fold

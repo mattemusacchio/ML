@@ -88,9 +88,9 @@ def trainPredictAndImport(train: pd.DataFrame, validation: pd.DataFrame, feature
         model.predict(train_df)
         model.print_coefficients()
         print('Métricas en datos de entrenamiento:')
-        model.compute_loss(metrics='all', X=train_df, Y=train_y)
+        model.compute_loss(metrics='all', X=train_df, Y=train_y_log)
         print('Métricas en datos de validación:')
-        model.compute_loss(metrics='all', X=val_df, Y=val_y)
+        model.compute_loss(metrics='all', X=val_df, Y=val_y_log)
     
     def evaluatePseudoInverse(model: LinearRegression, X: pd.DataFrame, y: pd.Series):
         print('Results for Pseudo Inverse')
@@ -98,9 +98,9 @@ def trainPredictAndImport(train: pd.DataFrame, validation: pd.DataFrame, feature
         model.predict(train_df)
         model.print_coefficients()
         print('Métricas en datos de entrenamiento:')
-        model.compute_loss(metrics='all', X=train_df, Y=train_y)
+        model.compute_loss(metrics='all', X=train_df, Y=train_y_log)
         print('Métricas en datos de validación:')
-        model.compute_loss(metrics='all', X=val_df, Y=val_y)
+        model.compute_loss(metrics='all', X=val_df, Y=val_y_log)
 
     def evaluateNormalEquation(model: LinearRegression, X: pd.DataFrame, y: pd.Series):
         print('Results for Normal Equation')
@@ -108,12 +108,14 @@ def trainPredictAndImport(train: pd.DataFrame, validation: pd.DataFrame, feature
         model.predict(train_df)
         model.print_coefficients()
         print('Métricas en datos de entrenamiento:')
-        model.compute_loss(metrics='all', X=train_df, Y=train_y)
+        model.compute_loss(metrics='all', X=train_df, Y=train_y_log)
         print('Métricas en datos de validación:')
-        model.compute_loss(metrics='all', X=val_df, Y=val_y)
+        model.compute_loss(metrics='all', X=val_df, Y=val_y_log)
 
     train_y = train['price']
+    train_y_log = np.log1p(train_y)
     val_y = validation['price']
+    val_y_log = np.log1p(val_y)
 
     if feature == 'all':
         train_df = train.drop(columns=['price'])
@@ -125,20 +127,20 @@ def trainPredictAndImport(train: pd.DataFrame, validation: pd.DataFrame, feature
         train_df = train[[feature]]
         val_df = validation[[feature]] 
     
-    model = LinearRegression(train_df, train_y)
+    model = LinearRegression(train_df, train_y_log)
     if method == 'gradient':
         evaluateGradientDescent(model, val_df, val_y)
     elif method == 'pseudo':
         evaluatePseudoInverse(model, val_df, val_y)
     if method == 'both':
         # Generate two new models to avoid overwriting the previous one
-        evaluateGradientDescent(LinearRegression(train_df, train_y), val_df, val_y)
+        evaluateGradientDescent(LinearRegression(train_df, train_y_log), val_df, val_y)
         print('========================================================')
-        evaluatePseudoInverse(LinearRegression(train_df, train_y), val_df, val_y)
+        evaluatePseudoInverse(LinearRegression(train_df, train_y_log), val_df, val_y)
     if method == 'l2':
-        evaluateNormalEquation(LinearRegression(train_df, train_y, l2=l2), val_df, val_y)
+        evaluateNormalEquation(LinearRegression(train_df, train_y_log, l2=l2), val_df, val_y)
     if method == 'l1':
-        evaluateGradientDescent(LinearRegression(train_df, train_y, l1=l1), val_df, val_y)
+        evaluateGradientDescent(LinearRegression(train_df, train_y_log, l1=l1), val_df, val_y)
 
 def feature_engineering(df):
     from preprocessing import one_hot_encoder

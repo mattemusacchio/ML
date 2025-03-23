@@ -40,8 +40,11 @@ class LinearRegression:
         Returns:
             dict o print: Diccionario con las métricas y sus valores, o print con la información formateada.
         """
-        predictions = self.predict(self.X) if X is None else self.predict(X)
-        ground_truth = self.y if Y is None else Y
+        predictions_log = self.predict(self.X) if X is None else self.predict(X)
+        predictions = np.expm1(predictions_log)
+        ground_truth_log = self.y if Y is None else Y
+        ground_truth = np.expm1(ground_truth_log)
+
 
         # Definimos las métricas disponibles
         available_metrics = {

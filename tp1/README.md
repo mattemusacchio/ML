@@ -1,6 +1,20 @@
-# Trabajo Práctico 1: Regresión Lineal
+# Trabajo Práctico 1
 
-Este repositorio contiene el código y los datos para el Trabajo Práctico 1 de la materia de Machine Learning, enfocado en la implementación y evaluación de modelos de regresión lineal.
+Este repositorio contiene el código y los datos para el Trabajo Práctico 1, enfocado en la implementación y evaluación de modelos de regresión lineal.
+
+## Descripción del Trabajo Práctico
+
+Este trabajo práctico se centra en la implementación y análisis de modelos de regresión lineal para la predicción de variables continuas. El objetivo principal es desarrollar un sistema de regresión lineal desde cero.
+
+En este proyecto:
+
+- Implementamos un modelo de regresión lineal utilizando diferentes métodos de optimización (descenso de gradiente y pseudo-inversa)
+- Desarrollamos funciones para evaluar el rendimiento del modelo mediante diversas métricas (MSE, MAE, RMSE, R²)
+- Creamos utilidades para el preprocesamiento de datos, incluyendo normalización y codificación de variables categóricas
+- Aplicamos técnicas de validación cruzada para evaluar la robustez del modelo
+- Analizamos la importancia de las características y la interpretabilidad del modelo
+
+Los resultados y análisis detallados se encuentran en el notebook principal, donde se muestra paso a paso el proceso de desarrollo, entrenamiento y evaluación del modelo.
 
 ## Estructura del Proyecto
 
@@ -62,7 +76,7 @@ jupyter notebook notebooks/Entrega_TP1.ipynb
 
 ## Descripción de los Módulos
 
-- **utils.py**: Contiene funciones auxiliares como `save_results()` para guardar resultados y `load_model()` para cargar modelos guardados.
+- **utils.py**: Contiene funciones auxiliares.
 - **metrics.py**: Implementa funciones para calcular métricas de evaluación como `mse()`, `mae()` y `rmse()`.
 - **preprocessing.py**: Contiene funciones para el preprocesamiento de datos como `one_hot_encoder()`, `normalize()` y `handle_missing_values()`.
 - **models.py**: Implementa la clase `LinearRegression()` para el modelo de regresión lineal.
@@ -70,6 +84,4 @@ jupyter notebook notebooks/Entrega_TP1.ipynb
 
 ## Autores
 
-- Nombre Apellido 1 (Padrón: XXXXX)
-- Nombre Apellido 2 (Padrón: XXXXX)
-- Nombre Apellido 3 (Padrón: XXXXX) 
+- Matteo Musacchio

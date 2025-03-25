@@ -45,6 +45,17 @@ def pretty_print_df(df, num_rows=15, title=None,index=False):
     display(Markdown(markdown_text))
 
 def inverse_normalize(df, normalization_parameters):
+    """
+    Desnormaliza un DataFrame utilizando los parámetros de normalización.
+    
+    Args:
+        df (pandas.DataFrame): El DataFrame normalizado que se quiere desnormalizar.
+        normalization_parameters (dict): Diccionario con los parámetros de normalización.
+            Las claves son los nombres de las columnas y los valores son tuplas (min_val, max_val).
+    
+    Returns:
+        pandas.DataFrame: El DataFrame desnormalizado.
+    """
     for col in normalization_parameters:
         min_val, max_val = normalization_parameters[col]
         df[col] = df[col] * (max_val - min_val) + min_val
@@ -100,6 +111,23 @@ def normal_equation(model: LinearRegression, X_train: pd.DataFrame, y_train: pd.
     model.analyze_metrics(X=X_val, Y=y_val)
    
 def train_model_and_evaluate(train: pd.DataFrame, val: pd.DataFrame, features: list, method: str,l1=0.0,l2=0.0):
+    """
+    Entrena un modelo de regresión lineal y evalúa su rendimiento.
+    
+    Esta función entrena un modelo de regresión lineal utilizando el método especificado
+    y evalúa su rendimiento en conjuntos de entrenamiento y validación.
+    
+    Args:
+        train (pd.DataFrame): DataFrame con los datos de entrenamiento
+        val (pd.DataFrame): DataFrame con los datos de validación
+        features (list): Lista de características a utilizar en el modelo
+        method (str): Método de entrenamiento ('gradient', 'pseudo', 'l1' o 'l2')
+        l1 (float, opcional): Coeficiente de regularización L1 (Lasso). Por defecto 0.0
+        l2 (float, opcional): Coeficiente de regularización L2 (Ridge). Por defecto 0.0
+        
+    Returns:
+        None: La función imprime las métricas y coeficientes del modelo
+    """
     train_y = train['price']
     train_y_log = np.log1p(train_y)
     val_y = val['price']

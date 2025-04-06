@@ -2,37 +2,40 @@ import numpy as np
 
 def one_hot_encoding(df, categorical_columns=None):
     """
-    Realiza one-hot encoding en las columnas categóricas de un DataFrame.
+    Realiza one-hot encoding en columnas categóricas, tratando '???' y NaN como una categoría separada (_Nan).
     
     Args:
         df (pd.DataFrame): DataFrame con columnas categóricas
         categorical_columns (list, opcional): Lista de columnas categóricas a codificar.
-                                            Si es None, se detectan automáticamente.
+                                              Si es None, se detectan automáticamente.
     
     Returns:
-        pd.DataFrame: DataFrame con las columnas categóricas codificadas
+        pd.DataFrame: DataFrame con las columnas codificadas
     """
-    # Crear una copia para no modificar el original
     df_copy = df.copy()
-    
-    # Si no se especifican columnas categóricas, detectarlas automáticamente
+
     if categorical_columns is None:
         categorical_columns = df_copy.select_dtypes(include=['object', 'category']).columns.tolist()
-    
-    # Para cada columna categórica
+
     for col in categorical_columns:
         if col in df_copy.columns:
-            # Obtener valores únicos
-            unique_values = df_copy[col].unique()
-            
-            # Crear nuevas columnas para cada valor único
+            # Unificar '???' y NaN como np.nan
+            df_copy[col] = df_copy[col].replace('???', np.nan)
+
+            # Obtener valores únicos excluyendo NaN
+            unique_values = df_copy[col].dropna().unique()
+
             for value in unique_values:
                 new_col_name = f"{col}_{value}"
                 df_copy[new_col_name] = (df_copy[col] == value).astype(int)
-            
+
+            # Crear columna para los NaN (incluye antes '???')
+            nan_col_name = f"{col}_Nan"
+            df_copy[nan_col_name] = np.where(df_copy[col].isna(), np.nan, 0)
+
             # Eliminar la columna original
             df_copy.drop(columns=[col], inplace=True)
-    
+
     return df_copy
 
 
@@ -133,11 +136,15 @@ def handle_outliers(df, method='mean', threshold=1.5):
                 # Recortar los valores a los límites
                 df_copy.loc[df_copy[col] < lower_bound, col] = lower_bound
                 df_copy.loc[df_copy[col] > upper_bound, col] = upper_bound
+            elif method == 'delete':
+                # Eliminar filas con outliers
+                df_copy = df_copy[~outliers]
+                print(f"Se eliminaron {n_outliers} filas con outliers en la columna '{col}'")
     
     return df_copy
 
 
-def min_max_normalize(train_df, val_df, columns):
+def min_max_normalize(train_df, val_df, columns,params={}):
     """
     Normaliza las columnas numéricas seleccionadas usando normalización Min-Max,
     que escala los valores al rango [0,1]. Primero normaliza el conjunto de entrenamiento
@@ -153,10 +160,9 @@ def min_max_normalize(train_df, val_df, columns):
     - val_df: pd.DataFrame de validación normalizado
     - params: dict con los parámetros (min, max) por columna para poder revertir
     """
-    params = {}
     # Primero normalizar el conjunto de entrenamiento y guardar parámetros
-    for col in columns:
-        if col != 'Diagnosis':
+    if params == {}:
+        for col in columns:
             min_val = train_df[col].min()
             max_val = train_df[col].max()
             train_df[col] = (train_df[col] - min_val) / (max_val - min_val)
@@ -164,7 +170,6 @@ def min_max_normalize(train_df, val_df, columns):
     
     # Usar los parámetros del conjunto de entrenamiento para normalizar validación
     for col in columns:
-        if col != 'Diagnosis':
             min_val, max_val = params[col]
             val_df[col] = (val_df[col] - min_val) / (max_val - min_val)
         

@@ -1,6 +1,6 @@
 import numpy as np
 
-def train_val_split(df, test_size=0.2, random_state=95):
+def train_val_split(df, test_size=0.2, random_state=42):
 
     """
     Divide el DataFrame en conjuntos de entrenamiento y validación sin usar sklearn.

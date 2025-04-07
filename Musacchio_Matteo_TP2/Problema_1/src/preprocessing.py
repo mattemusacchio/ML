@@ -1,4 +1,5 @@
 import numpy as np
+import pandas as pd
 
 def one_hot_encoding(df, categorical_columns=None):
     """
@@ -84,7 +85,7 @@ def handle_missing_values(df, n_neighbors=7):
     
     return df_copy
 
-def handle_outliers(df, method='mean', threshold=1.5):
+def handle_outliers(df, method='nan', threshold=1.5):
     """
     Detecta y maneja outliers en un DataFrame.
     
@@ -105,11 +106,11 @@ def handle_outliers(df, method='mean', threshold=1.5):
     # Para cada columna numérica
     for col in numeric_columns:
         # Calcular Q1, Q3 e IQR
-        Q1 = df_copy[col].quantile(0.15)
-        Q3 = df_copy[col].quantile(0.85)
+        Q1 = df_copy[col].quantile(0.25)
+        Q3 = df_copy[col].quantile(0.75)
         IQR = Q3 - Q1
         
-        # Calcular límites
+        # # Calcular límites
         lower_bound = Q1 - threshold * IQR
         upper_bound = Q3 + threshold * IQR
         
@@ -121,7 +122,7 @@ def handle_outliers(df, method='mean', threshold=1.5):
             n_outliers = outliers.sum()
             outlier_percentage = (n_outliers / len(df_copy)) * 100
             
-            print(f"Columna '{col}': {n_outliers} outliers ({outlier_percentage:.2f}%)")
+            # print(f"Columna '{col}': {n_outliers} outliers ({outlier_percentage:.2f}%)")
             
             # Reemplazar outliers según el método especificado
             if method == 'mean':
@@ -140,11 +141,14 @@ def handle_outliers(df, method='mean', threshold=1.5):
                 # Eliminar filas con outliers
                 df_copy = df_copy[~outliers]
                 print(f"Se eliminaron {n_outliers} filas con outliers en la columna '{col}'")
+            elif method == 'nan':
+                # Reemplazar outliers con NaN
+                df_copy.loc[outliers, col] = np.nan
     
     return df_copy
 
 
-def min_max_normalize(train_df, val_df, columns,params={}):
+def min_max_normalize(train_df=None, val_df=None, columns=None,params={}):
     """
     Normaliza las columnas numéricas seleccionadas usando normalización Min-Max,
     que escala los valores al rango [0,1]. Primero normaliza el conjunto de entrenamiento
@@ -169,10 +173,46 @@ def min_max_normalize(train_df, val_df, columns,params={}):
             params[col] = (min_val, max_val)
     
     # Usar los parámetros del conjunto de entrenamiento para normalizar validación
-    for col in columns:
-            min_val, max_val = params[col]
-            val_df[col] = (val_df[col] - min_val) / (max_val - min_val)
+    if val_df is not None:
+        for col in params.keys():
+                min_val, max_val = params[col]
+                val_df[col] = (val_df[col] - min_val) / (max_val - min_val)
         
     return train_df, val_df, params
+
+def preprocess_file(df, n_neighbors=7, outlier_method='mean', threshold=1.5,target_column='Diagnosis',params={}):
+    """
+    Preprocesa un DataFrame aplicando one-hot encoding, imputación de valores faltantes y manejo de outliers.
+    
+    Args:
+        df (pd.DataFrame): DataFrame a preprocesar
+        categorical_columns (list, opcional): Lista de columnas categóricas a codificar.
+                                              Si es None, se detectan automáticamente.
+        n_neighbors (int): Número de vecinos a considerar para la imputación KNN
+        outlier_method (str): Método para manejar outliers ('mean', 'median', 'clip', 'delete')
+        threshold (float): Factor para el cálculo de los límites de outliers
+        
+    Returns:
+        pd.DataFrame: DataFrame preprocesado
+    """
+    X = df.drop(target_column, axis=1)
+    y = df[target_column]
+    X = handle_outliers(X)
+    X = handle_missing_values(X)
+    categorical_columns = X.select_dtypes(include=['object', 'category']).columns.tolist()
+    X = one_hot_encoding(X, categorical_columns)
+    if 'CellType_Mesnchymal' in X.columns and 'GeneticMutation_Absnt'in X.columns and 'GeneticMutation_Nan'in X.columns and 'CellType_Nan'in X.columns:
+        X['CellType_Epthlial'] = X['CellType_Nan'] + X['CellType_Epthlial']
+        X = X.drop(columns=['CellType_Nan', 'CellType_Mesnchymal','GeneticMutation_Absnt','GeneticMutation_Nan'])
+        X['CellType_Epthlial'] = (X['CellType_Epthlial'] > 0.5).astype(int)
+    # X = X.values.astype(np.float64)
+    # y = y.values.astype(np.float64)
+    df = pd.concat([X, y], axis=1)
+    # if params == {}:
+    #     df, _, params = min_max_normalize(train_df=df, columns=X.columns)
+    #     return df, params
+    # else:
+    #     _, df, _ = min_max_normalize(val_df=df, params=params)
+    return df
 
 

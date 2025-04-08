@@ -208,11 +208,11 @@ def preprocess_file(df, n_neighbors=7, outlier_method='mean', threshold=1.5,targ
     # X = X.values.astype(np.float64)
     # y = y.values.astype(np.float64)
     df = pd.concat([X, y], axis=1)
-    # if params == {}:
-    #     df, _, params = min_max_normalize(train_df=df, columns=X.columns)
-    #     return df, params
-    # else:
-    #     _, df, _ = min_max_normalize(val_df=df, params=params)
+    if params == {}:
+        df, _, params = min_max_normalize(train_df=df, columns=X.columns)
+        return df, params
+    else:
+        _, df, _ = min_max_normalize(val_df=df, params=params)
     return df
 
 

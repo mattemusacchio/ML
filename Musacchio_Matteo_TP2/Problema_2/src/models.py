@@ -10,44 +10,65 @@ from .metrics import (
     recall_score,
     f1_score,
     plot_roc_curve,
-    plot_precision_recall_curve
+    plot_precision_recall_curve,
+    roc_auc_score,
+    average_precision_score,
+    average_precision_score_rf,
 )
+from .utils import pretty_print_df
 
 import seaborn as sns
 import matplotlib.pyplot as plt
 
-def evaluate(y_true, y_pred, y_proba, title="Modelo"):
-    """Evalúa el desempeño de un modelo binario."""
-    
-    print(f"Evaluación del modelo: {title}")
-    print("-" * 40)
-    
-    acc = accuracy_score(y_true, y_pred)
-    prec = precision_score(y_true, y_pred)
-    rec = recall_score(y_true, y_pred)
-    f1 = f1_score(y_true, y_pred)
-    
-    print(f"Accuracy:  {acc:.3f}")
-    print(f"Precision: {prec:.3f}")
-    print(f"Recall:    {rec:.3f}")
-    print(f"F1-score:  {f1:.3f}")
+def evaluate(y_true, y_pred, y_proba, title="Modelo",graficar=False,rf=False):
+    tpr_list, fpr_list, aucs = roc_auc_score(y_true, y_proba)
+    if rf:
+        precision_list, recall_list, auc_pr = average_precision_score_rf(y_true, y_proba)
+    else:
+        precision_list, recall_list, auc_pr = average_precision_score(y_true, y_proba)
+
+    metrics = {
+            "Accuracy": accuracy_score(y_true, y_pred),
+            "Precision": precision_score(y_true, y_pred),
+            "Recall": recall_score(y_true, y_pred),
+            "F1-Score": f1_score(y_true, y_pred),
+            "AUC-ROC": aucs,
+            "AUC-PR": auc_pr,
+        }
+    if title == "":
+        return metrics
+    pd_metrics = pd.DataFrame({
+                'Métrica': ['Accuracy', 'Precision', 'Recall', 'F1-Score', 'AUC-ROC', 'AUC-PR'],
+                'Valor': [
+                    metrics['Accuracy'],
+                    metrics['Precision'],
+                    metrics['Recall'],
+                    metrics['F1-Score'],
+                    metrics['AUC-ROC'],
+                    metrics['AUC-PR']
+                ]
+            })
+    pretty_print_df(pd_metrics, title=f"Métricas del modelo en el dataset de {title}")
     
     # Matriz de confusión
     cm = confusion_matrix(y_true, y_pred)
-    sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", xticklabels=[0, 1], yticklabels=[0, 1])
-    plt.xlabel("Predicción")
-    plt.ylabel("Real")
-    plt.title(f"Matriz de Confusión - {title}")
-    plt.show()
-    
-    # Curva ROC
-    plot_roc_curve(y_true, y_proba)
-    
-    # Curva Precision-Recall
-    plot_precision_recall_curve(y_true, y_proba)
+
+    if graficar:
+        sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", xticklabels=[1, 2,3], yticklabels=[1, 2,3])
+        plt.xlabel("Predicción")
+        plt.ylabel("Real")
+        plt.title(f"Matriz de Confusión - {title}")
+        plt.show()
+        
+        # Curva ROC
+        plot_roc_curve(y_true, y_proba)
+        
+        # Curva Precision-Recall
+        plot_precision_recall_curve(y_true, y_proba)
+    return metrics
 
 
-class LogisticRegression:
+class MulticlassLogisticRegression:
     """
     Implementación de una regresión logística binaria con regularización L2.
     """
@@ -108,14 +129,14 @@ class LogisticRegression:
         df = pd.DataFrame({'Feature': nombres_filas, 'Coeficiente': coeficientes})
         pretty_print_df(df)
 
-    def evaluate(self, X, y_true, print_metrics=""):
-        evaluate(y_true, self.predict(X), self.predict_proba(X), title=print_metrics)
+    def evaluate(self, X, y_true, print_metrics="",graficar=False):
+        return evaluate(y_true, self.predict(X), self.predict_proba(X), title=print_metrics,graficar=graficar)
 
 class LDA:
     def __init__(self):
         self.classes = None
-        self.means = None
-        self.priors = None
+        self.means = {}
+        self.priors = {}
         self.cov_inv = None
 
     def fit(self, X, y):
@@ -138,6 +159,7 @@ class LDA:
         self.cov_inv = np.linalg.inv(Sw / (n_samples - len(self.classes)))
         
     def predict(self, X):
+        X = X.to_numpy() if isinstance(X, pd.DataFrame) else X
         scores = []
         for c in self.classes:
             mu = self.means[c]
@@ -147,13 +169,25 @@ class LDA:
             scores.append(score)
         scores = np.vstack(scores).T
         return self.classes[np.argmax(scores, axis=1)]
+    
+    def predict_proba(self, X):
+        X = X.to_numpy() if isinstance(X, pd.DataFrame) else X
+        scores = []
+        for c in self.classes:
+            mu = self.means[c]
+            prior = self.priors[c]
+            # Score discriminante (forma cuadrática)
+            score = X @ self.cov_inv @ mu - 0.5 * mu.T @ self.cov_inv @ mu + np.log(prior)
+            scores.append(score)
+        scores = np.vstack(scores).T
+        return np.exp(scores) / np.sum(np.exp(scores), axis=1, keepdims=True)
 
     def score(self, X, y):
         y_pred = self.predict(X)
         return np.mean(y_pred == y)
     
-    def evaluate(self, X, y_true, print_metrics=""):
-        evaluate(y_true, self.predict(X), self.predict_proba(X), title=print_metrics)
+    def evaluate(self, X, y_true, print_metrics="",graficar=False):
+        return evaluate(y_true, self.predict(X), self.predict_proba(X), title=print_metrics,graficar=graficar)
 
 # --- ENTROPÍA Y GANANCIA DE INFORMACIÓN ---
 
@@ -169,116 +203,123 @@ def information_gain(y, left_idx, right_idx):
     p = len(left_y) / len(y)
     return entropy(y) - p * entropy(left_y) - (1 - p) * entropy(right_y)
 
-# --- NODO DE ÁRBOL DE DECISIÓN ---
-
-class DecisionNode:
-    def __init__(self, feature=None, threshold=None, left=None, right=None, *, value=None):
-        self.feature = feature
-        self.threshold = threshold
-        self.left = left
-        self.right = right
-        self.value = value  # Clase si es hoja
-
-# --- ÁRBOL DE DECISIÓN ---
-
 class DecisionTree:
-    def __init__(self, max_depth=10, min_samples_split=2, n_features=None):
+    def __init__(self, max_depth=None, min_samples_split=2, n_features=None,classes=None):
         self.max_depth = max_depth
         self.min_samples_split = min_samples_split
-        self.n_features = n_features
-        self.root = None
+        self.n_features = n_features  # cantidad de features a usar en cada split
+        self.tree = None
+        self.classes = classes
 
-    def fit(self, X, y):
+    def fit(self, X, y,classes=None):
+        if classes is None:
+            self.classes_ = np.unique(y)
+        else:
+            self.classes_ = classes
+        self.class_to_index = {cls: i for i, cls in enumerate(self.classes_)}
         self.n_classes = len(set(y))
-        self.n_features = X.shape[1] if self.n_features is None else self.n_features
-        self.root = self._grow_tree(X, y)
+        self.n_features = self.n_features or X.shape[1]
+        self.tree = self._grow_tree(X, y)
+
+    def _entropy(self, y):
+        counts = np.bincount(y)
+        probs = counts / len(y)
+        return -np.sum([p * np.log2(p) for p in probs if p > 0])
+
+    def _best_split(self, X, y, features):
+        best_gain = -1
+        split = None
+        parent_entropy = self._entropy(y)
+
+        for feat in features:
+            thresholds = np.unique(X[:, feat])
+            for threshold in thresholds:
+                left = y[X[:, feat] <= threshold]
+                right = y[X[:, feat] > threshold]
+                if len(left) == 0 or len(right) == 0:
+                    continue
+                gain = parent_entropy - (
+                    len(left) / len(y) * self._entropy(left)
+                    + len(right) / len(y) * self._entropy(right)
+                )
+                if gain > best_gain:
+                    best_gain = gain
+                    split = (feat, threshold)
+        return split
 
     def _grow_tree(self, X, y, depth=0):
         n_samples, n_features = X.shape
-        n_labels = len(set(y))
-
-        if (depth >= self.max_depth or n_labels == 1 or n_samples < self.min_samples_split):
-            leaf_value = self._most_common_label(y)
-            return DecisionNode(value=leaf_value)
+        if (depth >= self.max_depth or
+            n_samples < self.min_samples_split or
+            len(set(y)) == 1):
+            return Counter(y).most_common(1)[0][0]
 
         feat_idxs = np.random.choice(n_features, self.n_features, replace=False)
+        split = self._best_split(X, y, feat_idxs)
+        if not split:
+            return Counter(y).most_common(1)[0][0]
 
-        # encontrar mejor split
-        best_gain = -1
-        split = None
-        for feat in feat_idxs:
-            thresholds = np.unique(X[:, feat])
-            for t in thresholds:
-                left_idx = np.where(X[:, feat] <= t)[0]
-                right_idx = np.where(X[:, feat] > t)[0]
-                if len(left_idx) == 0 or len(right_idx) == 0:
-                    continue
+        feat, thresh = split
+        left_idxs = X[:, feat] <= thresh
+        right_idxs = X[:, feat] > thresh
+        left = self._grow_tree(X[left_idxs], y[left_idxs], depth + 1)
+        right = self._grow_tree(X[right_idxs], y[right_idxs], depth + 1)
+        return (feat, thresh, left, right)
 
-                gain = information_gain(y, left_idx, right_idx)
-
-                if gain > best_gain:
-                    split = {
-                        'feature': feat,
-                        'threshold': t,
-                        'left_idx': left_idx,
-                        'right_idx': right_idx
-                    }
-                    best_gain = gain
-
-        if split is None:
-            return DecisionNode(value=self._most_common_label(y))
-
-        left = self._grow_tree(X[split['left_idx']], y[split['left_idx']], depth + 1)
-        right = self._grow_tree(X[split['right_idx']], y[split['right_idx']], depth + 1)
-
-        return DecisionNode(feature=split['feature'], threshold=split['threshold'], left=left, right=right)
-
-    def _most_common_label(self, y):
-        counter = Counter(y)
-        return counter.most_common(1)[0][0]
+    def _predict_one(self, x, tree):
+        if not isinstance(tree, tuple):
+            return tree
+        feat, thresh, left, right = tree
+        if x[feat] <= thresh:
+            return self._predict_one(x, left)
+        else:
+            return self._predict_one(x, right)
 
     def predict(self, X):
-        return [self._traverse_tree(x, self.root) for x in X]
+        return np.array([self._predict_one(x, self.tree) for x in X])
+    
+    def predict_proba(self, X):
+        proba = np.zeros((X.shape[0], self.n_classes))
+        for i, x in enumerate(X):
+            class_label = self._predict_one(x, self.tree)
+            class_index = self.class_to_index[class_label] 
+            proba[i, class_index] += 1
+        return proba
 
-    def _traverse_tree(self, x, node):
-        if node.value is not None:
-            return node.value
 
-        if x[node.feature] <= node.threshold:
-            return self._traverse_tree(x, node.left)
-        return self._traverse_tree(x, node.right)
-
-# --- RANDOM FOREST CLASSIFIER ---
-
-class RandomForest:
-    def __init__(self, n_trees=10, max_depth=10, min_samples_split=2, n_features=None):
+class RandomForestClassifier:
+    def __init__(self, n_trees=10, max_depth=999, min_samples_split=2, max_features=None):
         self.n_trees = n_trees
         self.max_depth = max_depth
         self.min_samples_split = min_samples_split
-        self.n_features = n_features
+        self.max_features = max_features
         self.trees = []
 
     def fit(self, X, y):
+        X = X.to_numpy() if isinstance(X, pd.DataFrame) else X
+        y = y.to_numpy() if isinstance(y, pd.Series) else y
+        self.classes_ = np.unique(y)
         self.trees = []
         for _ in range(self.n_trees):
+            idxs = np.random.choice(len(X), len(X), replace=True)
+            X_sample, y_sample = X[idxs], y[idxs]
             tree = DecisionTree(
                 max_depth=self.max_depth,
                 min_samples_split=self.min_samples_split,
-                n_features=self.n_features
+                n_features=self.max_features
             )
-            X_sample, y_sample = self._bootstrap_sample(X, y)
-            tree.fit(X_sample, y_sample)
+            tree.fit(X_sample, y_sample, classes=self.classes_)
             self.trees.append(tree)
-
-    def _bootstrap_sample(self, X, y):
-        n_samples = X.shape[0]
-        idxs = np.random.choice(n_samples, n_samples, replace=True)
-        return X[idxs], y[idxs]
 
     def predict(self, X):
         tree_preds = np.array([tree.predict(X) for tree in self.trees])
-        tree_preds = np.swapaxes(tree_preds, 0, 1)  # [n_samples, n_trees]
-        return [Counter(row).most_common(1)[0][0] for row in tree_preds]
+        return np.array([Counter(preds).most_common(1)[0][0] for preds in tree_preds.T])
     
-    def evaluate(self, X, y_true, print_metrics=""):
-        evaluate(y_true, self.predict(X), self.predict_proba(X), title=print_metrics)
+    def predict_proba(self, X):
+        tree_preds = np.array([tree.predict_proba(X) for tree in self.trees])
+        return np.mean(tree_preds, axis=0)
+    
+    def evaluate(self, X, y_true, print_metrics="",graficar=False,rf=True):
+        X = X.to_numpy() if isinstance(X, pd.DataFrame) else X
+        y_true = y_true.to_numpy() if isinstance(y_true, pd.Series) else y_true
+        return evaluate(y_true, self.predict(X), self.predict_proba(X), title=print_metrics,graficar=graficar,rf=rf)

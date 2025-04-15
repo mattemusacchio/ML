@@ -54,17 +54,19 @@ def evaluate(y_true, y_pred, y_proba, title="Modelo",graficar=False,rf=False):
     cm = confusion_matrix(y_true, y_pred)
 
     if graficar:
-        sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", xticklabels=[1, 2,3], yticklabels=[1, 2,3])
-        plt.xlabel("Predicción")
-        plt.ylabel("Real")
-        plt.title(f"Matriz de Confusión - {title}")
+        sns.heatmap(cm, annot=True, fmt="d", cmap="Blues", xticklabels=[1, 2, 3], yticklabels=[1, 2, 3], annot_kws={"size": 30})
+        plt.xlabel("Predicción", fontsize=20)
+        plt.ylabel("Real", fontsize=20)
+        plt.title(f"{title}", fontsize=20)
+        plt.xticks(fontsize=20)
+        plt.yticks(fontsize=20)
         plt.show()
         
         # Curva ROC
-        plot_roc_curve(y_true, y_proba)
+        plot_roc_curve(y_true, y_proba,title=title)
         
         # Curva Precision-Recall
-        plot_precision_recall_curve(y_true, y_proba)
+        plot_precision_recall_curve(y_true, y_proba,rf=rf,title=title)
     return metrics
 
 

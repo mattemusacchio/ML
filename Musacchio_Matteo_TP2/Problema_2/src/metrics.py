@@ -206,7 +206,7 @@ def average_precision_score_rf(y_true, y_proba, average='macro'):
 
 
 
-def plot_roc_curve(y_true, y_proba):
+def plot_roc_curve(y_true, y_proba,title=""):
     """
     Grafica la curva ROC para clasificación multiclase (One-vs-Rest).
     """
@@ -217,28 +217,40 @@ def plot_roc_curve(y_true, y_proba):
         plt.plot(fpr_dict[clase], tpr_dict[clase], label=f"Clase {clase}")
     
     plt.plot([0, 1], [0, 1], 'k--', linewidth=0.8)
-    plt.xlabel("False Positive Rate")
-    plt.ylabel("True Positive Rate")
-    plt.title(f"Curva ROC (AUC-ROC = {macro_auc:.2f})")
-    plt.legend()
+    plt.xlabel("False Positive Rate", fontsize=17)
+    plt.ylabel("True Positive Rate", fontsize=17)
+    if title == "":
+        plt.title(f"Curva ROC (AUC-ROC = {macro_auc:.2f})")
+    else:
+        plt.title(title, fontsize=17)
+    plt.legend(loc='lower right', fontsize=17)
+    plt.xticks(fontsize=17)
+    plt.yticks(fontsize=17)
     plt.grid(True)
     plt.show()
 
 
-def plot_precision_recall_curve(y_true, y_proba):
+def plot_precision_recall_curve(y_true, y_proba,rf=False,title=""):
     """
     Grafica la curva Precision-Recall para clasificación multiclase (One-vs-Rest).
     """
-    precision_dict, recall_dict, macro_auc = average_precision_score_rf(y_true, y_proba)
-
+    if rf:
+        precision_dict, recall_dict, macro_auc = average_precision_score_rf(y_true, y_proba)
+    else:
+        precision_dict, recall_dict, macro_auc = average_precision_score(y_true, y_proba)
     plt.figure(figsize=(6, 6))
     for clase in precision_dict:
         plt.plot(recall_dict[clase], precision_dict[clase], label=f"Clase {clase}")
     
-    plt.xlabel("Recall")
-    plt.ylabel("Precision")
-    plt.title(f"Curva Precision-Recall (AUC-PR = {macro_auc:.2f})")
-    plt.legend()
+    plt.xlabel("Recall", fontsize=17)
+    plt.ylabel("Precision", fontsize=17)
+    if title == "":
+        plt.title(f"Curva Precision-Recall (AUC-PR = {macro_auc:.2f})")
+    else:
+        plt.title(title, fontsize=17)
+    plt.xticks(fontsize=17)
+    plt.yticks(fontsize=17)
+    plt.legend(loc='lower right', fontsize=17)
     plt.grid(True)
     plt.show()
 

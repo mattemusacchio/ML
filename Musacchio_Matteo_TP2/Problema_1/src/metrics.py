@@ -74,7 +74,7 @@ def plot_roc_curve(y_true, y_proba):
     tpr_list, fpr_list = roc_auc_score(y_true, y_proba)
 
     plt.figure(figsize=(6, 6))
-    plt.plot(fpr_list, tpr_list, label=f"AUC-ROC = {np.trapz(tpr_list,fpr_list):.2f}", color="blue")
+    plt.plot(fpr_list, tpr_list, label=f"AUC-ROC = {np.trapz(tpr_list,fpr_list):.2f}", color="steelblue")
     plt.plot([0, 1], [0, 1], 'k--', linewidth=0.8)
     plt.xlabel("False Positive Rate")
     plt.ylabel("True Positive Rate")
@@ -88,7 +88,7 @@ def plot_precision_recall_curve(y_true, y_proba):
     precision_list,recall_list = average_precision_score(y_true, y_proba)
 
     plt.figure(figsize=(6, 6))
-    plt.plot(recall_list, precision_list, label=f"AUC-PR = {np.trapz(precision_list,recall_list):.2f}", color="red")
+    plt.plot(recall_list, precision_list, label=f"AUC-PR = {np.trapz(precision_list,recall_list):.2f}", color="indianred")
     plt.xlabel("Recall")
     plt.ylabel("Precision")
     plt.title("Curva Precision-Recall")

@@ -41,13 +41,14 @@ def pretty_print_df(df, num_rows=15, title=None, index=False):
     # Mostrar el markdown
     display(Markdown(markdown_text))
 
-def find_best_lambda(X_train, y_train, X_val, y_val,reweight=False):
+def find_best_lambda(X_train, y_train, X_val, y_val, reweight=False):
     from .models import LogisticRegression
+    import matplotlib.pyplot as plt
     """
     Busca el mejor valor de lambda para la regresión logística usando validación cruzada.
     """
 
-    lambda_values = np.logspace(-4, 2, 10)
+    lambda_values = np.logspace(-4, 2, 60)
 
     # Inicializamos variables para encontrar el mejor lambda
     best_fscore = 0

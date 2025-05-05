@@ -2,44 +2,59 @@ import numpy as np
 import pandas as pd
 from IPython.display import display, Markdown
 
-def compute_entropy(counts):
-    """Calcula la entropía H(X) a partir de cuentas"""
-    probs = counts / counts.sum()
-    probs = probs[probs > 0]  # Evita log(0)
-    return -np.sum(probs * np.log2(probs))
+import numpy as np
+import pandas as pd
 
-def conditional_entropy(y, x, n_bins=10):
-    """Calcula la entropía condicional H(Y|X) discretizando X"""
-    df = pd.DataFrame({'x': x, 'y': y})
-    # Discretizamos X en quantiles
-    df['x_bin'] = pd.qcut(df['x'], q=n_bins, duplicates='drop')
-    H_y_given_x = 0
-    total = len(df)
+def mutual_information(x, y):
+    """
+    Calcula la información mutua entre dos variables discretas x e y.
+    """
+    x = np.array(x)
+    y = np.array(y)
     
-    for x_val in df['x_bin'].unique():
-        subset = df[df['x_bin'] == x_val]['y']
-        weight = len(subset) / total
-        H_subset = compute_entropy(subset.value_counts())
-        H_y_given_x += weight * H_subset
-    return H_y_given_x
+    # Valores únicos
+    x_vals = np.unique(x)
+    y_vals = np.unique(y)
 
-def mutual_information_feature(y, x, n_bins=10):
-    """Calcula I(X; Y) = H(Y) - H(Y|X)"""
-    H_y = compute_entropy(pd.Series(y).value_counts())
-    H_y_given_x = conditional_entropy(y, x, n_bins)
-    return H_y - H_y_given_x
+    # Conteos
+    N = len(x)
+    mi = 0.0
 
-def mutual_information_all(X, y, n_bins=10):
-    """Calcula I(Xi ; y) para cada feature numérico Xi"""
-    mi_scores = {}
-    for col in X.columns:
-        if pd.api.types.is_numeric_dtype(X[col]):
-            try:
-                mi = mutual_information_feature(y, X[col], n_bins)
-                mi_scores[col] = mi
-            except Exception as e:
-                print(f"Error en feature {col}: {e}")
-    return pd.Series(mi_scores).sort_values(ascending=False)
+    for xi in x_vals:
+        for yi in y_vals:
+            p_x = np.sum(x == xi) / N
+            p_y = np.sum(y == yi) / N
+            p_xy = np.sum((x == xi) & (y == yi)) / N
+
+            if p_xy > 0:
+                mi += p_xy * np.log2(p_xy / (p_x * p_y))
+
+    return mi
+
+
+def compute_mutual_info_dataframe(df, target_col):
+    """
+    Calcula la información mutua de cada columna de df con respecto a target_col.
+    Retorna un DataFrame ordenado.
+    """
+    target = df[target_col]
+    mi_scores = []
+
+    for col in df.columns:
+        if col == target_col:
+            continue
+
+        # Discretizar si es numérica (opcional, acá con bins)
+        if df[col].dtype in [np.float64, np.int64]:
+            x = pd.qcut(df[col], q=5, duplicates='drop').astype(str)
+        else:
+            x = df[col].astype(str)
+
+        mi = mutual_information(x, target)
+        mi_scores.append((col, mi))
+
+    return pd.DataFrame(mi_scores, columns=['Feature', 'Mutual Information']).sort_values(by='Mutual Information', ascending=False).reset_index(drop=True)
+
 
 def pretty_print_df(df, num_rows=15, title=None, index=False):
     """
@@ -87,7 +102,7 @@ def find_best_lambda_m(X_train, y_train, X_val, y_val):
     Busca el mejor valor de lambda para la regresión logística usando validación cruzada.
     """
 
-    lambda_values = np.logspace(-14, -1, 10)
+    lambda_values = np.logspace(-4, 2, 10)
 
     # Inicializamos variables para encontrar el mejor lambda
     best_fscore = 0

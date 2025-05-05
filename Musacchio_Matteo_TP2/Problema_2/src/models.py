@@ -64,7 +64,7 @@ def evaluate(y_true, y_pred, y_proba, title="Modelo",graficar=False,rf=False):
         plot_roc_curve(y_true, y_proba)
         
         # Curva Precision-Recall
-        plot_precision_recall_curve(y_true, y_proba)
+        plot_precision_recall_curve(y_true, y_proba,rf=rf)
     return metrics
 
 

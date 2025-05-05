@@ -61,9 +61,11 @@ def f1_score(y_true, y_pred, average='macro'):
 
     return np.mean(f1s) if average == 'macro' else None
 
+
+
 def roc_auc_score(y_true, y_proba, average='macro'):
     """
-    Calcula el AUC-ROC para clasificación multiclase usando One-vs-Rest.
+    Calcula el AUC-ROC para clasificación multiclase usando One-vs-Rest hecho por Matteo Musacchio.
     Devuelve listas de TPR y FPR por clase.
     """
     clases = np.unique(y_true)
@@ -225,11 +227,14 @@ def plot_roc_curve(y_true, y_proba):
     plt.show()
 
 
-def plot_precision_recall_curve(y_true, y_proba):
+def plot_precision_recall_curve(y_true, y_proba,rf=False):
     """
     Grafica la curva Precision-Recall para clasificación multiclase (One-vs-Rest).
     """
-    precision_dict, recall_dict, macro_auc = average_precision_score_rf(y_true, y_proba)
+    if rf:
+        precision_dict, recall_dict, macro_auc = average_precision_score_rf(y_true, y_proba)
+    else:
+        precision_dict, recall_dict, macro_auc = average_precision_score(y_true, y_proba)
 
     plt.figure(figsize=(6, 6))
     for clase in precision_dict:

@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-
+import torch
 import matplotlib.pyplot as plt
 
 def plot_confusion_matrix(cm, class_labels, title="Matriz de Confusión"):
@@ -13,12 +13,12 @@ def plot_confusion_matrix(cm, class_labels, title="Matriz de Confusión"):
     plt.yticks(tick_marks, class_labels)
 
     # Mostrar los valores en las celdas
-    thresh = cm.max() / 2.
-    for i in range(len(class_labels)):
-        for j in range(len(class_labels)):
-            plt.text(j, i, format(cm[i, j], 'd'),
-                     ha="center", va="center",
-                     color="white" if cm[i, j] > thresh else "black")
+    # thresh = cm.max() / 2.
+    # for i in range(len(class_labels)):
+    #     for j in range(len(class_labels)):
+    #         plt.text(j, i, format(cm[i, j], 'd'),
+    #                  ha="center", va="center",
+    #                  color="white" if cm[i, j] > thresh else "black")
 
     plt.ylabel('Etiqueta Real')
     plt.xlabel('Etiqueta Predicha')
@@ -28,9 +28,25 @@ def plot_confusion_matrix(cm, class_labels, title="Matriz de Confusión"):
 def evaluate(model, X, y_true_oh, title="Dataset"):
     from .utils import pretty_print_df
     from .models import cross_entropy
-    y_pred_proba = model.forward(X)[0][-1]
-    y_pred = np.argmax(y_pred_proba, axis=1)
-    y_true = np.argmax(y_true_oh, axis=1)
+    
+    with torch.no_grad():
+        output = model.forward(X)
+        if isinstance(output, tuple):
+            y_pred_proba = output[0][-1]  # modelo devuelve (all_outputs, ...)
+        else:
+            y_pred_proba = output
+
+        # convertir a numpy si es tensor
+        if isinstance(y_pred_proba, torch.Tensor):
+            y_pred_proba = y_pred_proba.detach().numpy()
+        if isinstance(y_true_oh, torch.Tensor):
+            y_true_oh = y_true_oh.detach().numpy()
+
+        y_pred = np.argmax(y_pred_proba, axis=1)
+        y_true = np.argmax(y_true_oh, axis=1)
+    
+    # ... seguir con métricas y visualización
+
 
     acc = np.mean(y_true == y_pred)
     loss = cross_entropy(y_true_oh, y_pred_proba)

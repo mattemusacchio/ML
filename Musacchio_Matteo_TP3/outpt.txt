@@ -1,0 +1,868 @@
+🔍 Probing 288 configurations...
+
+🔧 Running config 1/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.7116
+
+🔧 Running config 2/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 1.7168
+
+🔧 Running config 3/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 3.3709
+
+🔧 Running config 4/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.7545
+
+🔧 Running config 5/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.7073
+
+🔧 Running config 6/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 1.8383
+
+🔧 Running config 7/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 3.1547
+
+🔧 Running config 8/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.7684
+
+🔧 Running config 9/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.9801
+
+🔧 Running config 10/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.4730
+
+🔧 Running config 11/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.5293
+
+🔧 Running config 12/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.4561
+
+🔧 Running config 13/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.0345
+
+🔧 Running config 14/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.0148
+
+🔧 Running config 15/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.9535
+
+🔧 Running config 16/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.7250
+
+🔧 Running config 17/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.1014
+
+🔧 Running config 18/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.1997
+
+🔧 Running config 19/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 3.0069
+
+🔧 Running config 20/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.8201
+
+🔧 Running config 21/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.4469
+
+🔧 Running config 22/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.7958
+
+🔧 Running config 23/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.5516
+
+🔧 Running config 24/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.3736
+
+🔧 Running config 25/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.7033
+
+🔧 Running config 26/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 1.7160
+
+🔧 Running config 27/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.5988
+
+🔧 Running config 28/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.5263
+
+🔧 Running config 29/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.7042
+
+🔧 Running config 30/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 1.8391
+
+🔧 Running config 31/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.5195
+
+🔧 Running config 32/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.3274
+
+🔧 Running config 33/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.9821
+
+🔧 Running config 34/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.4740
+
+🔧 Running config 35/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.1524
+
+🔧 Running config 36/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.1628
+
+🔧 Running config 37/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.0295
+
+🔧 Running config 38/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.0138
+
+🔧 Running config 39/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.6570
+
+🔧 Running config 40/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.5278
+
+🔧 Running config 41/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.1007
+
+🔧 Running config 42/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.2001
+
+🔧 Running config 43/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.4063
+
+🔧 Running config 44/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.4361
+
+🔧 Running config 45/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.4477
+
+🔧 Running config 46/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.7965
+
+🔧 Running config 47/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.3275
+
+🔧 Running config 48/288: {'hidden_layers': [64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.1654
+
+🔧 Running config 49/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.7186
+
+🔧 Running config 50/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 1.8767
+
+🔧 Running config 51/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.3859
+
+🔧 Running config 52/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.2513
+
+🔧 Running config 53/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.8115
+
+🔧 Running config 54/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.1397
+
+🔧 Running config 55/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.4029
+
+🔧 Running config 56/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.2531
+
+🔧 Running config 57/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.4720
+
+🔧 Running config 58/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 3.1403
+
+🔧 Running config 59/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.2040
+
+🔧 Running config 60/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.0032
+
+🔧 Running config 61/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.0151
+
+🔧 Running config 62/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.2433
+
+🔧 Running config 63/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.5993
+
+🔧 Running config 64/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.3859
+
+🔧 Running config 65/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.1660
+
+🔧 Running config 66/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.5175
+
+🔧 Running config 67/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.5288
+
+🔧 Running config 68/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.3232
+
+🔧 Running config 69/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.7951
+
+🔧 Running config 70/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 3.3120
+
+🔧 Running config 71/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.3418
+
+🔧 Running config 72/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.1993
+
+🔧 Running config 73/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.7169
+
+🔧 Running config 74/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 1.8774
+
+🔧 Running config 75/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.2227
+
+🔧 Running config 76/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.0674
+
+🔧 Running config 77/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.8128
+
+🔧 Running config 78/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.1406
+
+🔧 Running config 79/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.1368
+
+🔧 Running config 80/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.0647
+
+🔧 Running config 81/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.4741
+
+🔧 Running config 82/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 3.1408
+
+🔧 Running config 83/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 1.9091
+
+🔧 Running config 84/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 1.8908
+
+🔧 Running config 85/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.0135
+
+🔧 Running config 86/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.2435
+
+🔧 Running config 87/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.2501
+
+🔧 Running config 88/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.3487
+
+🔧 Running config 89/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.1662
+
+🔧 Running config 90/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.5182
+
+🔧 Running config 91/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.1618
+
+🔧 Running config 92/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.3691
+
+🔧 Running config 93/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.7966
+
+🔧 Running config 94/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 3.3123
+
+🔧 Running config 95/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.0331
+
+🔧 Running config 96/288: {'hidden_layers': [64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.1241
+
+🔧 Running config 97/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.6716
+
+🔧 Running config 98/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 1.6702
+
+🔧 Running config 99/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 3.4506
+
+🔧 Running config 100/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.2136
+
+🔧 Running config 101/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.6630
+
+🔧 Running config 102/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 1.7778
+
+🔧 Running config 103/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 3.0295
+
+🔧 Running config 104/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.1466
+
+🔧 Running config 105/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.8952
+
+🔧 Running config 106/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.3058
+
+🔧 Running config 107/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.4349
+
+🔧 Running config 108/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.0152
+
+🔧 Running config 109/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.8277
+
+🔧 Running config 110/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 1.8594
+
+🔧 Running config 111/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.6984
+
+🔧 Running config 112/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.7238
+
+🔧 Running config 113/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.8249
+
+🔧 Running config 114/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.0772
+
+🔧 Running config 115/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.8300
+
+🔧 Running config 116/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.4481
+
+🔧 Running config 117/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.1231
+
+🔧 Running config 118/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.5425
+
+🔧 Running config 119/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.6669
+
+🔧 Running config 120/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.4868
+
+🔧 Running config 121/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.6628
+
+🔧 Running config 122/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 1.6697
+
+🔧 Running config 123/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.8175
+
+🔧 Running config 124/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.3042
+
+🔧 Running config 125/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.6607
+
+🔧 Running config 126/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 1.7784
+
+🔧 Running config 127/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.2655
+
+🔧 Running config 128/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.0703
+
+🔧 Running config 129/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.8972
+
+🔧 Running config 130/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.3070
+
+🔧 Running config 131/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 1.8690
+
+🔧 Running config 132/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 1.8511
+
+🔧 Running config 133/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.8210
+
+🔧 Running config 134/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 1.8593
+
+🔧 Running config 135/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.4916
+
+🔧 Running config 136/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.6179
+
+🔧 Running config 137/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.8262
+
+🔧 Running config 138/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.0773
+
+🔧 Running config 139/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.3167
+
+🔧 Running config 140/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.4032
+
+🔧 Running config 141/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.1246
+
+🔧 Running config 142/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.5433
+
+🔧 Running config 143/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.1603
+
+🔧 Running config 144/288: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.2925
+
+🔧 Running config 145/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.6707
+
+🔧 Running config 146/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 1.8080
+
+🔧 Running config 147/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.0382
+
+🔧 Running config 148/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.0122
+
+🔧 Running config 149/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.7555
+
+🔧 Running config 150/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.0263
+
+🔧 Running config 151/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.0353
+
+🔧 Running config 152/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 1.9944
+
+🔧 Running config 153/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.3060
+
+🔧 Running config 154/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.9264
+
+🔧 Running config 155/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 1.9007
+
+🔧 Running config 156/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 1.8783
+
+🔧 Running config 157/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.8585
+
+🔧 Running config 158/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.0394
+
+🔧 Running config 159/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.4699
+
+🔧 Running config 160/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.2026
+
+🔧 Running config 161/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.0536
+
+🔧 Running config 162/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.2731
+
+🔧 Running config 163/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.5510
+
+🔧 Running config 164/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.1663
+
+🔧 Running config 165/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.5426
+
+🔧 Running config 166/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 3.0976
+
+🔧 Running config 167/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.1806
+
+🔧 Running config 168/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 1.9758
+
+🔧 Running config 169/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.6692
+
+🔧 Running config 170/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 1.8090
+
+🔧 Running config 171/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 1.9103
+
+🔧 Running config 172/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 1.8122
+
+🔧 Running config 173/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.7567
+
+🔧 Running config 174/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.0275
+
+🔧 Running config 175/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 1.8787
+
+🔧 Running config 176/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 1.7983
+
+🔧 Running config 177/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.3083
+
+🔧 Running config 178/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.9272
+
+🔧 Running config 179/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 1.6800
+
+🔧 Running config 180/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 1.7124
+
+🔧 Running config 181/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.8575
+
+🔧 Running config 182/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.0399
+
+🔧 Running config 183/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.0780
+
+🔧 Running config 184/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.1430
+
+🔧 Running config 185/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.0544
+
+🔧 Running config 186/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.2738
+
+🔧 Running config 187/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.0726
+
+🔧 Running config 188/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.0162
+
+🔧 Running config 189/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.5441
+
+🔧 Running config 190/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 3.0981
+
+🔧 Running config 191/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 1.9808
+
+🔧 Running config 192/288: {'hidden_layers': [128], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 1.9524
+
+🔧 Running config 193/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.6954
+
+🔧 Running config 194/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 1.6948
+
+🔧 Running config 195/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 3.1833
+
+🔧 Running config 196/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 3.1409
+
+🔧 Running config 197/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.7057
+
+🔧 Running config 198/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 1.7343
+
+🔧 Running config 199/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 3.3162
+
+🔧 Running config 200/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 3.3985
+
+🔧 Running config 201/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.8263
+
+🔧 Running config 202/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.2686
+
+🔧 Running config 203/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 3.1062
+
+🔧 Running config 204/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.5664
+
+🔧 Running config 205/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.9938
+
+🔧 Running config 206/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.0796
+
+🔧 Running config 207/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.7365
+
+🔧 Running config 208/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.5771
+
+🔧 Running config 209/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.0593
+
+🔧 Running config 210/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.2966
+
+🔧 Running config 211/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.6448
+
+🔧 Running config 212/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.4144
+
+🔧 Running config 213/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.4564
+
+🔧 Running config 214/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.9521
+
+🔧 Running config 215/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.6608
+
+🔧 Running config 216/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.5375
+
+🔧 Running config 217/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.6826
+
+🔧 Running config 218/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 1.7068
+
+🔧 Running config 219/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.4708
+
+🔧 Running config 220/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.8590
+
+🔧 Running config 221/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.6961
+
+🔧 Running config 222/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 1.7337
+
+🔧 Running config 223/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.6114
+
+🔧 Running config 224/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.9334
+
+🔧 Running config 225/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.8283
+
+🔧 Running config 226/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.2699
+
+🔧 Running config 227/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.3881
+
+🔧 Running config 228/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.3160
+
+🔧 Running config 229/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.9834
+
+🔧 Running config 230/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.0774
+
+🔧 Running config 231/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.5079
+
+🔧 Running config 232/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.3298
+
+🔧 Running config 233/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.0559
+
+🔧 Running config 234/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.2966
+
+🔧 Running config 235/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.3625
+
+🔧 Running config 236/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.3686
+
+🔧 Running config 237/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.4580
+
+🔧 Running config 238/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.9519
+
+🔧 Running config 239/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.1277
+
+🔧 Running config 240/288: {'hidden_layers': [128, 64], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.3255
+
+🔧 Running config 241/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.6939
+
+🔧 Running config 242/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 1.7629
+
+🔧 Running config 243/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 3.2576
+
+🔧 Running config 244/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.5218
+
+🔧 Running config 245/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.7190
+
+🔧 Running config 246/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 1.9527
+
+🔧 Running config 247/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.7156
+
+🔧 Running config 248/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.3932
+
+🔧 Running config 249/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.2670
+
+🔧 Running config 250/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 3.0207
+
+🔧 Running config 251/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.4565
+
+🔧 Running config 252/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.1700
+
+🔧 Running config 253/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.1269
+
+🔧 Running config 254/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.3546
+
+🔧 Running config 255/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.3545
+
+🔧 Running config 256/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.2635
+
+🔧 Running config 257/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.2954
+
+🔧 Running config 258/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.6887
+
+🔧 Running config 259/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.5045
+
+🔧 Running config 260/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.2968
+
+🔧 Running config 261/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.9628
+
+🔧 Running config 262/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 3.4590
+
+🔧 Running config 263/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.2290
+
+🔧 Running config 264/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.0, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.2216
+
+🔧 Running config 265/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.7048
+
+🔧 Running config 266/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 1.7632
+
+🔧 Running config 267/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.3757
+
+🔧 Running config 268/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.3861
+
+🔧 Running config 269/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 1.7190
+
+🔧 Running config 270/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 1.9539
+
+🔧 Running config 271/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.5308
+
+🔧 Running config 272/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.3638
+
+🔧 Running config 273/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.2702
+
+🔧 Running config 274/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 3.0216
+
+🔧 Running config 275/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.0660
+
+🔧 Running config 276/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.0257
+
+🔧 Running config 277/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.1230
+
+🔧 Running config 278/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.3548
+
+🔧 Running config 279/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.3770
+
+🔧 Running config 280/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': None, 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.5143
+
+🔧 Running config 281/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.2949
+
+🔧 Running config 282/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 2.6896
+
+🔧 Running config 283/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.2708
+
+🔧 Running config 284/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'linear', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.1824
+
+🔧 Running config 285/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 32}
+✅ Final Val Loss: 2.9629
+
+🔧 Running config 286/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': False, 'batch_size': 64}
+✅ Final Val Loss: 3.4592
+
+🔧 Running config 287/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 32}
+✅ Final Val Loss: 2.1382
+
+🔧 Running config 288/288: {'hidden_layers': [128, 64], 'lr': 0.005, 'lambda_reg': 0.01, 'dropout': 0.2, 'scheduler': 'exponential', 'use_adam': True, 'batch_size': 64}
+✅ Final Val Loss: 2.0491
+
+🏆 Best config: {'hidden_layers': [128], 'lr': 0.01, 'lambda_reg': 0.01, 'dropout': 0.0, 'scheduler': 'linear', 'use_adam': False, 'batch_size': 32}
+📉 Best validation loss: 1.6607

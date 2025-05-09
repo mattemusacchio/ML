@@ -15,6 +15,7 @@ class NeuralNetwork:
         self.l2_lambda = l2_lambda  # Regularización L2
         self.dropout_rate = dropout_rate
 
+
         for i in range(self.num_layers):
             w = np.random.randn(layer_sizes[i], layer_sizes[i+1]) * np.sqrt(2. / layer_sizes[i])
             b = np.zeros((1, layer_sizes[i+1]))
@@ -138,7 +139,6 @@ class NeuralNetwork:
         l2_term = sum(np.sum(W**2) for W in self.weights)
         loss += (self.l2_lambda / (2 * y_true.shape[0])) * l2_term
         return loss
-
 
     def train(
         self,
@@ -279,7 +279,7 @@ def exponential_schedule(initial_lr=0.3, gamma=0.995):
     return scheduler
 
 
-def linear_schedule(epoch, initial_lr=0.1, final_lr=0.001, saturate_epoch=1000):
+def linear_schedule(epoch, initial_lr=0.1, final_lr=0.001, saturate_epoch=100):
     if epoch >= saturate_epoch:
         return final_lr
     return initial_lr - (epoch / saturate_epoch) * (initial_lr - final_lr)

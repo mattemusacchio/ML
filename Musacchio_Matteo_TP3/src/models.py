@@ -1,4 +1,4 @@
-import numpy as np
+import cupy as np
 
 class NeuralNetwork:
     def __init__(self, layer_sizes, learning_rate=0.01, use_adam=False, beta1=0.9, beta2=0.999, epsilon=1e-8,l2_lambda=0.0,dropout_rate=0.0, seed=42):
@@ -246,15 +246,24 @@ class NeuralNetwork:
 import matplotlib.pyplot as plt
 
 def plot_loss(history):
+    train_loss = history["train_loss"]
+    val_loss = history["val_loss"]
+
+    # Convertir cada elemento si es cupy.ndarray
+    train_loss = [loss.get() if hasattr(loss, "get") else loss for loss in train_loss]
+    val_loss = [loss.get() if hasattr(loss, "get") else loss for loss in val_loss]
+
     plt.figure(figsize=(8, 5))
-    plt.plot(history["train_loss"], label="Train Loss")
-    plt.plot(history["val_loss"], label="Validation Loss")
+    plt.plot(train_loss, label="Train Loss")
+    plt.plot(val_loss, label="Validation Loss")
     plt.xlabel("Epochs")
     plt.ylabel("Cross-Entropy Loss")
     plt.title("Evolución de la función de costo (modelo M0)")
     plt.legend()
     plt.grid(True)
-    plt.show()
+    plt.show
+
+
 
 
 def relu(Z):
@@ -273,7 +282,7 @@ def cross_entropy(y_true, y_pred):
     y_pred = np.clip(y_pred, eps, 1 - eps)
     return -np.mean(np.sum(y_true * np.log(y_pred), axis=1))
 
-def exponential_schedule(initial_lr=0.3, gamma=0.995):
+def exponential_schedule(initial_lr, gamma=0.995):
     def scheduler(epoch):
         return initial_lr * (gamma ** epoch)
     return scheduler

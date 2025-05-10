@@ -1,5 +1,5 @@
 from typing import Tuple
-import numpy as np
+import cupy as np
 
 def train_val_test_split(X: np.ndarray, y: np.ndarray,
                          train_size: float = 0.7,

@@ -5,9 +5,8 @@ import torch
 import matplotlib.pyplot as plt
 
 def plot_confusion_matrix(cm, class_labels, title="Matriz de Confusión"):
-    plt.figure(figsize=(6, 5))
-    plt.imshow(cm, interpolation='nearest', cmap=plt.cm.Blues)
-    plt.title(title)
+    plt.figure(figsize=(12, 8))
+    plt.imshow(cm, interpolation='nearest', cmap=plt.cm.Greens)
     plt.colorbar()
     tick_marks = np.arange(len(class_labels))
     plt.xticks(tick_marks, class_labels, rotation=45)

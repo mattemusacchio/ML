@@ -98,3 +98,53 @@ def grid_search_model_M1(param_grid, X_train, y_train, X_val, y_val, epochs=100,
     print("\n🏆 Best config:", best_config)
     print(f"📉 Best validation loss: {best_loss:.4f}")
     return best_config, best_history
+
+def grid_search_model_torch(param_grid, X_train, y_train, X_val, y_val, epochs=100, patience=10):
+    import itertools
+    from .models_torch import train_model_torch 
+
+    keys = list(param_grid.keys())
+    values = list(param_grid.values())
+    combinations = list(itertools.product(*values))
+
+    best_config = None
+    best_loss = float('inf')
+    best_history = None
+    best_model = None
+
+    print(f"🔍 Probing {len(combinations)} configurations...")
+
+    for i, combo in enumerate(combinations):
+        config = dict(zip(keys, combo))
+        print(f"\n🔧 Running config {i+1}/{len(combinations)}: {config}")
+
+        model, history = train_model_torch(
+            X_train=X_train,
+            y_train=y_train,
+            X_val=X_val,
+            y_val=y_val,
+            hidden_layers=config["hidden_layers"],
+            lr=config["lr"],
+            batch_size=config["batch_size"],
+            dropout=config["dropout"],
+            use_batchnorm=config.get("use_batchnorm", False),
+            weight_decay=config["lambda_reg"],
+            scheduler_type=config["scheduler"],
+            use_adam=config["use_adam"],
+            epochs=epochs,
+            patience=patience
+        )
+
+        val_loss = history["val_loss"][-1]
+        print(f"✅ Final Val Loss: {val_loss:.4f}")
+
+        if val_loss < best_loss:
+            best_loss = val_loss
+            best_config = config
+            best_history = history
+            best_model = model
+
+    print("\n🏆 Best config:", best_config)
+    print(f"📉 Best validation loss: {best_loss:.4f}")
+    return best_model, best_config, best_history
+

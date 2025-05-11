@@ -254,11 +254,10 @@ def plot_loss(history):
     val_loss = [loss.get() if hasattr(loss, "get") else loss for loss in val_loss]
 
     plt.figure(figsize=(8, 5))
-    plt.plot(train_loss, label="Train Loss")
-    plt.plot(val_loss, label="Validation Loss")
+    plt.plot(train_loss, label="Train Loss",color='cadetblue')
+    plt.plot(val_loss, label="Validation Loss",color='indianred')
     plt.xlabel("Epochs")
     plt.ylabel("Cross-Entropy Loss")
-    plt.title("Evolución de la función de costo (modelo M0)")
     plt.legend()
     plt.grid(True)
     plt.show

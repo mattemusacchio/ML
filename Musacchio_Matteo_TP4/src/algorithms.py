@@ -2,6 +2,7 @@ import numpy as np
 
 def kmeans(X, k, max_iters=100, tol=1e-4):
     # Inicialización aleatoria de centroides
+    np.random.seed(42)
     idx = np.random.choice(len(X), k, replace=False)
     centroids = X[idx]
 
@@ -131,35 +132,22 @@ def dbscan(X, eps, min_pts):
     return labels
 
 def pca(X, n_components):
-    """
-    Realiza PCA sobre los datos X y devuelve la proyección y la reconstrucción.
-    
-    Parámetros:
-        X: np.ndarray, matriz de datos de forma (n_samples, n_features)
-        n_components: int, número de componentes principales a conservar
-
-    Retorna:
-        X_reduced: np.ndarray, datos proyectados (n_samples, n_components)
-        X_reconstructed: np.ndarray, datos reconstruidos (n_samples, n_features)
-    """
-    # Centrar datos
     X_mean = np.mean(X, axis=0)
     X_centered = X - X_mean
-
-    # Calcular matriz de covarianza
     cov_matrix = np.cov(X_centered, rowvar=False)
-
-    # Autovalores y autovectores
     eigvals, eigvecs = np.linalg.eigh(cov_matrix)
 
-    # Ordenar de mayor a menor
+    # Ordenar autovalores y autovectores de mayor a menor
     idx_sorted = np.argsort(eigvals)[::-1]
-    eigvecs = eigvecs[:, idx_sorted[:n_components]]
+    eigvals_sorted = eigvals[idx_sorted]
+    eigvecs_sorted = eigvecs[:, idx_sorted]
 
     # Proyección
-    X_reduced = X_centered @ eigvecs
+    W = eigvecs_sorted[:, :n_components]
+    X_reduced = X_centered @ W
 
     # Reconstrucción
-    X_reconstructed = X_reduced @ eigvecs.T + X_mean
+    X_reconstructed = X_reduced @ W.T + X_mean
+    X_reconstructed = np.clip(X_reconstructed, 0, 1) 
 
-    return X_reduced, X_reconstructed
+    return X_reduced, X_reconstructed, eigvals_sorted, W, X_mean

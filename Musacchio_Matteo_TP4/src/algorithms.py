@@ -90,7 +90,7 @@ def gmm(X, k, max_iters=50, tol=1e-3):
         prev_ll = log_likelihood
 
     final_labels = np.argmax(gamma, axis=1)
-    return final_labels, means, log_likelihood
+    return final_labels, means, covs
 
 import numpy as np
 
